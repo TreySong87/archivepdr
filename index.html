@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSOP MAM 솔루션 선정 기술 검토 (Live Edit)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        /* 편집 모드 스타일 */
+        .editable-active:hover {
+            background-color: #eef2ff;
+            outline: 2px dashed #6366f1;
+            outline-offset: 4px;
+            border-radius: 4px;
+            cursor: text;
+        }
+        .editable-active:focus {
+            background-color: #fff;
+            outline: 2px solid #4f46e5;
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased pb-24">
+
+    <!-- 컨트롤 패널 (우측 하단 고정) -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+        <button onclick="toggleEditMode()" id="editBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white p-4 rounded-full shadow-lg transition-all transform hover:scale-105 flex items-center justify-center w-14 h-14" title="편집 모드 켜기/끄기">
+            <i class="fas fa-pen text-xl"></i>
+        </button>
+        <button onclick="resetContent()" class="bg-gray-600 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg transition-all transform hover:scale-105 flex items-center justify-center w-12 h-12" title="내용 초기화">
+            <i class="fas fa-undo text-lg"></i>
+        </button>
+        <div id="statusMsg" class="bg-gray-800 text-white text-xs py-1 px-3 rounded shadow-lg opacity-0 transition-opacity text-center hidden">
+            저장됨
+        </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-6 py-12" id="contentArea">
+        
+        <!-- 헤더 -->
+        <header class="mb-12 text-center">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4" data-editable="true" data-key="header-title">WSOP 아카이빙 프로젝트<br><span class="text-indigo-600">MAM 솔루션 선정 기술 검토</span></h1>
+            <p class="text-lg text-gray-600" data-editable="true" data-key="header-desc">GGProduction Technical Review</p>
+        </header>
+
+        <!-- 0. 현재 업무 프로세스 현황 -->
+        <section class="mb-12 bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <span class="bg-blue-100 text-blue-600 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">0</span>
+                <span data-editable="true" data-key="sec0-title">현재 업무 프로세스 현황</span>
+            </h2>
+            <div class="flex items-center justify-between bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900" data-editable="true" data-key="sec0-sub">Iconik 시스템 사용 중</h3>
+                    <p class="text-gray-600 mt-1" data-editable="true" data-key="sec0-desc">현재 영상 자산 관리 및 검색을 위해 Iconik 플랫폼을 활용하고 있습니다.</p>
+                </div>
+                <a href="https://app.iconik.io/login?next=%2Fsearch" target="_blank" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-5 rounded-lg transition duration-200">
+                    <i class="fas fa-external-link-alt"></i> Iconik 바로가기
+                </a>
+            </div>
+        </section>
+
+        <!-- 1. 프로젝트 핵심 요구사항 -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <span class="bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">1</span>
+                <span data-editable="true" data-key="sec1-title">프로젝트 핵심 요구사항 (Refined PDR)</span>
+            </h2>
+            
+            <!-- 핵심 PDR 4가지 요약 -->
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div class="bg-white p-5 rounded-lg border-l-4 border-indigo-500 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fas fa-search text-indigo-600"></i>
+                        <h3 class="font-bold text-gray-900" data-editable="true" data-key="pdr1-title">1. 출중한 검색 엔진</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed" data-editable="true" data-key="pdr1-desc">자연어 시맨틱 검색("Hellmuth가 화내는 장면") 및 자동 완성, 연관 검색어 제공 필수.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-lg border-l-4 border-indigo-500 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fas fa-robot text-indigo-600"></i>
+                        <h3 class="font-bold text-gray-900" data-editable="true" data-key="pdr2-title">2. 자동 Subclip & Tagging</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed" data-editable="true" data-key="pdr2-desc">AI 영상 분석을 통해 주요 장면(올인, 쇼다운)을 자동 인식하고 메타데이터 생성.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-lg border-l-4 border-indigo-500 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fas fa-brain text-indigo-600"></i>
+                        <h3 class="font-bold text-gray-900" data-editable="true" data-key="pdr3-title">3. 포커 AI 최적화 및 확장</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed" data-editable="true" data-key="pdr3-desc">포커 도메인 특화 학습(Option A) 또는 내부 AI 분석 결과 Write-back API 제공(Option B).</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-lg border-l-4 border-indigo-500 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fas fa-desktop text-indigo-600"></i>
+                        <h3 class="font-bold text-gray-900" data-editable="true" data-key="pdr4-title">4. 최적화된 UI/UX</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed" data-editable="true" data-key="pdr4-desc">글로벌 비전문가도 교육 없이 즉시 사용 가능한 UI 및 워크플로우 커스터마이징.</p>
+                </div>
+            </div>
+
+            <!-- PDR 토글 버튼 -->
+            <details class="group">
+                <summary class="flex items-center justify-between cursor-pointer bg-white p-5 rounded-lg shadow-sm border border-gray-200 hover:bg-gray-50 transition">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-gray-100 text-gray-600 p-2 rounded group-open:bg-indigo-600 group-open:text-white transition-colors">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <span class="font-bold text-gray-800 text-lg" data-editable="true" data-key="pdr-detail-btn">GGProduction 아카이빙 시스템 구축 PDR 상세 보기</span>
+                    </div>
+                    <span class="text-gray-500 group-open:rotate-180 transition-transform duration-200">
+                        <i class="fas fa-chevron-down"></i>
+                    </span>
+                </summary>
+                
+                <div class="mt-4 bg-white p-8 rounded-lg shadow-sm border border-gray-200 text-sm leading-relaxed">
+                    <div class="border-b pb-4 mb-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2" data-editable="true" data-key="pdr-full-title">GGProduction 아카이빙 시스템 PDR</h3>
+                        <p class="text-gray-600" data-editable="true" data-key="pdr-full-purpose"><strong>목적:</strong> 본 문서는 GGProduction 아카이빙 시스템 구축을 위한 핵심 필수 요구사항을 정의합니다.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8 mb-8">
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-3 border-b pb-1">1. 프로젝트 개요</h4>
+                            <ul class="space-y-2 list-disc pl-5 text-gray-700" data-editable="true" data-key="pdr-list-1">
+                                <li><strong>고성능 검색:</strong> 자연어 검색, 자동완성 등 출중한 검색 엔진 확보.</li>
+                                <li><strong>프로세스 자동화:</strong> AI 기반 자동 서브클리핑 및 태깅.</li>
+                                <li><strong>AI 확장성:</strong> '포커' 도메인 최적화 및 내부 AI 엔진 연동.</li>
+                                <li><strong>사용 편의성:</strong> 비전문가용 UI 및 워크플로우 커스터마이징.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-3 border-b pb-1">1.2. 비-목표 (범위 한정)</h4>
+                            <ul class="space-y-2 list-disc pl-5 text-gray-700" data-editable="true" data-key="pdr-list-2">
+                                <li class="text-red-600">클라우드 전용(Upload Only) SaaS 솔루션 제외.</li>
+                                <li>물리적 테이프(SAMMA) 변환 제외.</li>
+                                <li>단순 파일 저장소(Drive) 및 LTO 제외.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 상세 항목들 (생략 없이 전체 편집 가능하도록 함) -->
+                    <div class="mb-8" data-editable="true" data-key="pdr-detail-sections">
+                        <h4 class="font-bold text-gray-800 mb-4 border-b pb-1">2. 핵심 필수 요구사항 상세</h4>
+                        <div class="grid gap-4">
+                            <div class="bg-gray-50 p-3 rounded">
+                                <strong class="text-indigo-700 block mb-1">2.1. (핵심 1) 출중한 검색 엔진</strong>
+                                <span class="text-gray-600">자연어 시맨틱 검색("Hellmuth가 화내는 장면"), 자동 완성, 연관 검색어 제공.</span>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded">
+                                <strong class="text-indigo-700 block mb-1">2.2. (핵심 2) 자동 Subclip과 Tagging</strong>
+                                <span class="text-gray-600">AI 영상 분석을 통한 주요 장면(올인, 쇼다운) 인식 및 메타데이터(얼굴, 음성, OCR) 자동 생성.</span>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded">
+                                <strong class="text-indigo-700 block mb-1">2.3. (핵심 3) 포커 AI 최적화 및 확장</strong>
+                                <span class="text-gray-600">[옵션 A] 벤더 AI 커스터마이징(추가 학습) 또는 [옵션 B] 내부 AI 분석 결과 Write-back API 제공.</span>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded">
+                                <strong class="text-indigo-700 block mb-1">2.4. (핵심 4) 최적화된 UI/UX</strong>
+                                <span class="text-gray-600">비전문가도 즉시 사용 가능한 UI 및 워크플로우 커스터마이징 지원.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </section>
+
+        <!-- 2. 솔루션 선정 지연 사유 -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <span class="bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">2</span>
+                <span data-editable="true" data-key="sec2-title">솔루션 선정 지연 사유 (The Blocker)</span>
+            </h2>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-bold text-red-600 mb-4 flex items-center gap-2" data-editable="true" data-key="sec2-head">
+                    <i class="fas fa-exclamation-triangle"></i> 왜 선정이 늦어졌는가? : 시장의 기술적 한계와 검증 실패
+                </h3>
+                <div class="space-y-4">
+                    <div class="flex gap-4">
+                        <div class="w-1 bg-red-200 rounded shrink-0"></div>
+                        <div data-editable="true" data-key="sec2-p1">
+                            <h4 class="font-bold text-gray-800">Semantic Search 부재</h4>
+                            <p class="text-gray-600">대다수 MAM 솔루션이 단순 '텍스트 매칭' 수준이며, 우리가 요구하는 "상황 맥락 검색(Context Search)" 구현에 실패함.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-1 bg-red-200 rounded shrink-0"></div>
+                        <div data-editable="true" data-key="sec2-p2">
+                            <h4 class="font-bold text-gray-800">Customization 검증 난항</h4>
+                            <p class="text-gray-600">여러 유력 후보군과 PoC를 진행했으나, '포커' 특화 데이터 구조(핸드, 팟 등) 커스터마이징 실패 또는 과도한 개발 기간 소요.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded-lg mt-2" data-editable="true" data-key="sec2-concl">
+                        <p class="font-medium text-gray-800">➡ 결론: 범용 방송용 솔루션의 한계 확인. <strong>AI 검색 특화</strong> 및 <strong>API 확장성</strong>이 검증된 솔루션으로 후보 재선정.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 최종 후보 솔루션 비교 -->
+        <section class="mb-12">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
+                <h2 class="text-2xl font-bold text-gray-800 flex items-center">
+                    <span class="bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">3</span>
+                    <span data-editable="true" data-key="sec3-title">최종 후보 솔루션 비교</span>
+                </h2>
+                <a href="https://docs.google.com/presentation/d/1BwbGH-Yzwn1nYft2ItyTzo-uXEfG6AyULTImACmpkgU/edit?slide=id.g3b9e4fb58af_0_0#slide=id.g3b9e4fb58af_0_0" target="_blank" class="inline-flex items-center justify-center gap-2 bg-indigo-50 border border-indigo-200 hover:bg-indigo-100 text-indigo-700 px-5 py-2.5 rounded-lg transition font-medium shadow-sm">
+                    <i class="fas fa-table"></i>
+                    상세 비교표 보기
+                </a>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- 후보 A -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition">
+                    <div class="bg-indigo-600 p-4 text-white">
+                        <h3 class="text-xl font-bold" data-editable="true" data-key="cand1-name">A. Moments Lab</h3>
+                        <p class="text-indigo-200 text-sm" data-editable="true" data-key="cand1-sub">(구 Newsbridge)</p>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-500 font-medium mb-4 text-sm uppercase tracking-wide" data-editable="true" data-key="cand1-tag">PDR 1.1(검색) & 1.2(자동화) 특화</p>
+                        <ul class="space-y-3 mb-6" data-editable="true" data-key="cand1-list">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-500 mt-1"></i>
+                                <span class="text-gray-700"><strong>강점:</strong> 멀티모달 AI 엔진 탑재로 별도 학습 없이 자연어 검색 성능 우수.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-bullseye text-indigo-500 mt-1"></i>
+                                <span class="text-gray-700"><strong>적합성:</strong> 방대한 아카이브에서 <strong>'원하는 장면을 즉시 찾아내는 것'</strong>이 최우선일 때 강력.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 후보 B -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition">
+                    <div class="bg-gray-800 p-4 text-white">
+                        <h3 class="text-xl font-bold" data-editable="true" data-key="cand2-name">B. Dalet Flex</h3>
+                        <p class="text-gray-400 text-sm" data-editable="true" data-key="cand2-sub">Enterprise Workflow</p>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-500 font-medium mb-4 text-sm uppercase tracking-wide" data-editable="true" data-key="cand2-tag">PDR 1.3(확장성) & 워크플로우 관리 특화</p>
+                        <ul class="space-y-3 mb-6" data-editable="true" data-key="cand2-list">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-500 mt-1"></i>
+                                <span class="text-gray-700"><strong>강점:</strong> 엔터프라이즈급 엔진으로 타 시스템(OTT, 내부 AI) 연동 및 배포 파이프라인 설계 유리.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-bullseye text-indigo-500 mt-1"></i>
+                                <span class="text-gray-700"><strong>적합성:</strong> 시스템의 <strong>'안정성, 확장성, 커스터마이징'</strong>이 최우선일 때 표준.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 기술팀 검토 요청 사항 -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <span class="bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">4</span>
+                <span data-editable="true" data-key="sec4-title">기술팀 검토 요청 사항 (RFP Requirements)</span>
+            </h2>
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+                <p class="text-gray-600 mb-6" data-editable="true" data-key="sec4-intro">최종 결정을 위해 다음 4가지는 기술팀의 면밀한 검증(Feasibility Check)이 필요합니다.</p>
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4 pb-6 border-b border-gray-100 last:border-0 last:pb-0">
+                        <div class="bg-red-50 text-red-600 font-bold px-3 py-1 rounded text-sm whitespace-nowrap">Point 1</div>
+                        <div data-editable="true" data-key="rfp-1">
+                            <h4 class="text-lg font-bold text-gray-900 mb-1">Data Migration (from Iconik)</h4>
+                            <p class="text-gray-600">현재 사용 중인 <strong>Iconik</strong>의 메타데이터와 에셋을 손실 없이 이관할 수 있는가? (매핑 호환성 점검)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 pb-6 border-b border-gray-100 last:border-0 last:pb-0">
+                        <div class="bg-red-50 text-red-600 font-bold px-3 py-1 rounded text-sm whitespace-nowrap">Point 2</div>
+                        <div data-editable="true" data-key="rfp-2">
+                            <h4 class="text-lg font-bold text-gray-900 mb-1">API & Integration (Poker AI)</h4>
+                            <p class="text-gray-600">자체 구축할 'Poker AI'와 연동하여, 분석 데이터를 기반으로 <strong>자동 Subclipping 및 Auto Tagging</strong>을 트리거(Trigger) 할 수 있는가?</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 pb-6 border-b border-gray-100 last:border-0 last:pb-0">
+                        <div class="bg-red-50 text-red-600 font-bold px-3 py-1 rounded text-sm whitespace-nowrap">Point 3</div>
+                        <div data-editable="true" data-key="rfp-3">
+                            <h4 class="text-lg font-bold text-gray-900 mb-1">Security Architecture</h4>
+                            <p class="text-gray-600">외부 편집자 협업 시 원본 유출 방지(Proxy 워크플로우) 및 권한 제어(ACL) 정밀도.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 pb-6 border-b border-gray-100 last:border-0 last:pb-0">
+                        <div class="bg-red-50 text-red-600 font-bold px-3 py-1 rounded text-sm whitespace-nowrap">Point 4</div>
+                        <div data-editable="true" data-key="rfp-4">
+                            <h4 class="text-lg font-bold text-gray-900 mb-1">Future Scalability (OTT)</h4>
+                            <p class="text-gray-600">추후 구축될 자사 <strong>OTT 시스템</strong> 및 타 플랫폼과의 기술적 연동(Publishing Pipeline)이 원활한가?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 결론 -->
+        <footer class="bg-gray-900 text-white rounded-xl p-8 text-center" data-editable="true" data-key="footer">
+            <h2 class="text-2xl font-bold mb-4">결론 및 향후 계획</h2>
+            <p class="text-gray-300 mb-6 text-lg">
+                위 기술적 검증 사항(특히 <strong>마이그레이션</strong>과 <strong>OTT 확장성</strong>)을 중심으로<br>
+                <strong>Moments Lab</strong>과 <strong>Dalet Flex</strong>의 최종 PoC를 수행합니다.
+            </p>
+            <div class="inline-block border border-gray-700 bg-gray-800 px-6 py-3 rounded-full text-indigo-400 font-medium">
+                기술팀의 아키텍처 적합성 평가를 최우선 지표로 삼아 최종 1개 사 선정 예정
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        let isEditMode = false;
+        const STORAGE_KEY = 'wsop_mam_presentation_data';
+
+        // 1. 페이지 로드 시 저장된 데이터 불러오기
+        window.addEventListener('DOMContentLoaded', () => {
+            loadContent();
+        });
+
+        // 2. 편집 모드 토글 함수
+        function toggleEditMode() {
+            isEditMode = !isEditMode;
+            const elements = document.querySelectorAll('[data-editable="true"]');
+            const btn = document.getElementById('editBtn');
+
+            if (isEditMode) {
+                // 편집 모드 켜기
+                elements.forEach(el => {
+                    el.contentEditable = "true";
+                    el.classList.add('editable-active');
+                    // 입력 시 자동 저장 이벤트 리스너 추가
+                    el.addEventListener('input', debouncedSave);
+                });
+                btn.classList.replace('bg-indigo-600', 'bg-red-500');
+                btn.classList.replace('hover:bg-indigo-700', 'hover:bg-red-600');
+                btn.innerHTML = '<i class="fas fa-save text-xl"></i>';
+                showStatus('편집 모드 시작');
+            } else {
+                // 편집 모드 끄기 (저장)
+                elements.forEach(el => {
+                    el.contentEditable = "false";
+                    el.classList.remove('editable-active');
+                    el.removeEventListener('input', debouncedSave);
+                });
+                saveContent(); // 최종 저장
+                btn.classList.replace('bg-red-500', 'bg-indigo-600');
+                btn.classList.replace('hover:bg-red-600', 'hover:bg-indigo-700');
+                btn.innerHTML = '<i class="fas fa-pen text-xl"></i>';
+                showStatus('저장 완료');
+            }
+        }
+
+        // 3. 내용 저장 (LocalStorage)
+        function saveContent() {
+            const data = {};
+            document.querySelectorAll('[data-editable="true"]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (key) {
+                    data[key] = el.innerHTML;
+                }
+            });
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        }
+
+        // 디바운스 함수 (입력 중 과도한 저장 방지)
+        let timeout;
+        function debouncedSave() {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                saveContent();
+                showStatus('자동 저장됨...', 1000);
+            }, 1000);
+        }
+
+        // 4. 내용 불러오기
+        function loadContent() {
+            const savedData = localStorage.getItem(STORAGE_KEY);
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                document.querySelectorAll('[data-editable="true"]').forEach(el => {
+                    const key = el.getAttribute('data-key');
+                    if (data[key]) {
+                        el.innerHTML = data[key];
+                    }
+                });
+            }
+        }
+
+        // 5. 초기화 (Reset)
+        function resetContent() {
+            if(confirm('모든 변경사항을 초기화하시겠습니까? (되돌릴 수 없습니다)')) {
+                localStorage.removeItem(STORAGE_KEY);
+                location.reload();
+            }
+        }
+
+        // 6. 상태 메시지 표시
+        function showStatus(msg, duration = 2000) {
+            const el = document.getElementById('statusMsg');
+            el.innerText = msg;
+            el.classList.remove('hidden');
+            el.classList.remove('opacity-0');
+            
+            setTimeout(() => {
+                el.classList.add('opacity-0');
+                setTimeout(() => el.classList.add('hidden'), 300);
+            }, duration);
+        }
+    </script>
+</body>
+</html>
