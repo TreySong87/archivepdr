@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+        @NukkiCapture_Source\build\NukkiCapture_SD\localpycs\pyimod02_importers.pyc url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght @300;400;500;700&display=swap');
         body {
             font-family: 'Noto Sans KR', sans-serif;
         }
@@ -61,7 +61,9 @@
                 <span class="bg-blue-100 text-blue-600 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">0</span>
                 <span data-editable="true" data-key="sec0-title">현재 업무 프로세스 현황</span>
             </h2>
-            <div class="flex items-center justify-between bg-gray-50 p-6 rounded-lg border border-gray-200">
+            
+            <!-- Iconik Status -->
+            <div class="flex items-center justify-between bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
                 <div>
                     <h3 class="text-lg font-semibold text-gray-900" data-editable="true" data-key="sec0-sub">Iconik 시스템 사용 중</h3>
                     <p class="text-gray-600 mt-1" data-editable="true" data-key="sec0-desc">현재 영상 자산 관리 및 검색을 위해 Iconik 플랫폼을 활용하고 있습니다.</p>
@@ -70,16 +72,28 @@
                     <i class="fas fa-external-link-alt"></i> Iconik 바로가기
                 </a>
             </div>
+
+            <!-- Reason for Change -->
+            <div class="bg-red-50 border-l-4 border-red-400 p-5 rounded-r-lg">
+                <h3 class="font-bold text-red-800 mb-3 flex items-center gap-2" data-editable="true" data-key="reason-title">
+                    <i class="fas fa-exclamation-circle"></i> ICONIK에서 타 MAM 플랫폼으로 변경하려는 이유
+                </h3>
+                <ul class="space-y-2 text-red-700" data-editable="true" data-key="reason-list">
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-red-400 rounded-full"></span>1. 서브클립 추출 기능 빈약</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-red-400 rounded-full"></span>2. 시맨틱 서치 기능 부재</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-red-400 rounded-full"></span>3. AI 인터그레이션 기능 빈약</li>
+                </ul>
+            </div>
         </section>
 
         <!-- 1. 프로젝트 핵심 요구사항 -->
         <section class="mb-12">
             <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
                 <span class="bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">1</span>
-                <span data-editable="true" data-key="sec1-title">프로젝트 핵심 요구사항 (Refined PDR)</span>
+                <span data-editable="true" data-key="sec1-title">프로젝트 핵심 요구사항 (Refined PRD)</span>
             </h2>
             
-            <!-- 핵심 PDR 4가지 요약 -->
+            <!-- 핵심 PRD 4가지 요약 -->
             <div class="grid md:grid-cols-2 gap-4 mb-6">
                 <div class="bg-white p-5 rounded-lg border-l-4 border-indigo-500 shadow-sm hover:shadow-md transition">
                     <div class="flex items-center gap-2 mb-2">
@@ -114,14 +128,14 @@
                 </div>
             </div>
 
-            <!-- PDR 토글 버튼 -->
+            <!-- PRD 토글 버튼 -->
             <details class="group">
                 <summary class="flex items-center justify-between cursor-pointer bg-white p-5 rounded-lg shadow-sm border border-gray-200 hover:bg-gray-50 transition">
                     <div class="flex items-center gap-3">
                         <div class="bg-gray-100 text-gray-600 p-2 rounded group-open:bg-indigo-600 group-open:text-white transition-colors">
                             <i class="fas fa-file-alt"></i>
                         </div>
-                        <span class="font-bold text-gray-800 text-lg" data-editable="true" data-key="pdr-detail-btn">GGProduction 아카이빙 시스템 구축 PDR 상세 보기</span>
+                        <span class="font-bold text-gray-800 text-lg" data-editable="true" data-key="pdr-detail-btn">GGProduction 아카이빙 시스템 구축 PRD 상세 보기</span>
                     </div>
                     <span class="text-gray-500 group-open:rotate-180 transition-transform duration-200">
                         <i class="fas fa-chevron-down"></i>
@@ -130,7 +144,7 @@
                 
                 <div class="mt-4 bg-white p-8 rounded-lg shadow-sm border border-gray-200 text-sm leading-relaxed">
                     <div class="border-b pb-4 mb-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2" data-editable="true" data-key="pdr-full-title">GGProduction 아카이빙 시스템 PDR</h3>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2" data-editable="true" data-key="pdr-full-title">GGProduction 아카이빙 시스템 PRD</h3>
                         <p class="text-gray-600" data-editable="true" data-key="pdr-full-purpose"><strong>목적:</strong> 본 문서는 GGProduction 아카이빙 시스템 구축을 위한 핵심 필수 요구사항을 정의합니다.</p>
                     </div>
 
@@ -154,7 +168,7 @@
                         </div>
                     </div>
 
-                    <!-- 상세 항목들 (생략 없이 전체 편집 가능하도록 함) -->
+                    <!-- 상세 항목들 -->
                     <div class="mb-8" data-editable="true" data-key="pdr-detail-sections">
                         <h4 class="font-bold text-gray-800 mb-4 border-b pb-1">2. 핵심 필수 요구사항 상세</h4>
                         <div class="grid gap-4">
@@ -212,12 +226,12 @@
             </div>
         </section>
 
-        <!-- 3. 최종 후보 솔루션 비교 -->
+        <!-- 3. 최종 후보 솔루션 -->
         <section class="mb-12">
             <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
                 <h2 class="text-2xl font-bold text-gray-800 flex items-center">
                     <span class="bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">3</span>
-                    <span data-editable="true" data-key="sec3-title">최종 후보 솔루션 비교</span>
+                    <span data-editable="true" data-key="sec3-title">최종 후보 솔루션</span>
                 </h2>
                 <a href="https://docs.google.com/presentation/d/1BwbGH-Yzwn1nYft2ItyTzo-uXEfG6AyULTImACmpkgU/edit?slide=id.g3b9e4fb58af_0_0#slide=id.g3b9e4fb58af_0_0" target="_blank" class="inline-flex items-center justify-center gap-2 bg-indigo-50 border border-indigo-200 hover:bg-indigo-100 text-indigo-700 px-5 py-2.5 rounded-lg transition font-medium shadow-sm">
                     <i class="fas fa-table"></i>
@@ -225,59 +239,43 @@
                 </a>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- 후보 A -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition">
-                    <div class="bg-indigo-600 p-4 text-white">
-                        <h3 class="text-xl font-bold" data-editable="true" data-key="cand1-name">A. Moments Lab</h3>
-                        <p class="text-indigo-200 text-sm" data-editable="true" data-key="cand1-sub">(구 Newsbridge)</p>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-500 font-medium mb-4 text-sm uppercase tracking-wide" data-editable="true" data-key="cand1-tag">PDR 1.1(검색) & 1.2(자동화) 특화</p>
-                        <ul class="space-y-3 mb-6" data-editable="true" data-key="cand1-list">
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-green-500 mt-1"></i>
-                                <span class="text-gray-700"><strong>강점:</strong> 멀티모달 AI 엔진 탑재로 별도 학습 없이 자연어 검색 성능 우수.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-bullseye text-indigo-500 mt-1"></i>
-                                <span class="text-gray-700"><strong>적합성:</strong> 방대한 아카이브에서 <strong>'원하는 장면을 즉시 찾아내는 것'</strong>이 최우선일 때 강력.</span>
-                            </li>
-                        </ul>
-                    </div>
+            <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden max-w-2xl mx-auto">
+                <div class="bg-gray-800 p-6 text-white text-center">
+                    <h3 class="text-2xl font-bold mb-1" data-editable="true" data-key="cand2-name">Dalet Flex</h3>
+                    <p class="text-gray-400 text-sm" data-editable="true" data-key="cand2-sub">Enterprise Workflow</p>
                 </div>
-
-                <!-- 후보 B -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition">
-                    <div class="bg-gray-800 p-4 text-white">
-                        <h3 class="text-xl font-bold" data-editable="true" data-key="cand2-name">B. Dalet Flex</h3>
-                        <p class="text-gray-400 text-sm" data-editable="true" data-key="cand2-sub">Enterprise Workflow</p>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-500 font-medium mb-4 text-sm uppercase tracking-wide" data-editable="true" data-key="cand2-tag">PDR 1.3(확장성) & 워크플로우 관리 특화</p>
-                        <ul class="space-y-3 mb-6" data-editable="true" data-key="cand2-list">
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-check text-green-500 mt-1"></i>
-                                <span class="text-gray-700"><strong>강점:</strong> 엔터프라이즈급 엔진으로 타 시스템(OTT, 내부 AI) 연동 및 배포 파이프라인 설계 유리.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fas fa-bullseye text-indigo-500 mt-1"></i>
-                                <span class="text-gray-700"><strong>적합성:</strong> 시스템의 <strong>'안정성, 확장성, 커스터마이징'</strong>이 최우선일 때 표준.</span>
-                            </li>
-                        </ul>
+                <div class="p-8">
+                    <p class="text-gray-500 font-medium mb-6 text-center text-sm uppercase tracking-wide border-b pb-4" data-editable="true" data-key="cand2-tag">PRD 1.3(확장성) & 워크플로우 관리 특화</p>
+                    <ul class="space-y-4 mb-8" data-editable="true" data-key="cand2-list">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-500 mt-1 text-lg"></i>
+                            <span class="text-gray-700 text-lg"><strong>강점:</strong> 엔터프라이즈급 엔진으로 타 시스템(OTT, 내부 AI) 연동 및 배포 파이프라인 설계 유리.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-bullseye text-indigo-500 mt-1 text-lg"></i>
+                            <span class="text-gray-700 text-lg"><strong>적합성:</strong> 시스템의 <strong>'안정성, 확장성, 커스터마이징'</strong>이 최우선일 때 표준.</span>
+                        </li>
+                    </ul>
+                    
+                    <!-- Demo Button -->
+                    <div class="text-center">
+                        <a href="https://poc2.flex.daletdemos.com/login/a/poc2/redirectSso?destination=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InNlc3Npb25Ub2tlbiJ9.eyJpc3MiOiJzc28iLCJpYXQiOjE3NzAxMDY3MTksInR5cGUiOiJzc28iLCJjYWxsYmFjayI6Imh0dHBzOi8vcG9jMi5mbGV4LmRhbGV0ZGVtb3MuY29tL2ZtcC9tYW5hZ2UvbWVkaWEvODE3MTEwNiJ9.RPO6WdvTrxypDpWuzmOEOpdW6X-83nayaa4KQdlV5nY" target="_blank" class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
+                            <i class="fas fa-play-circle text-xl"></i>
+                            Dalet Flex Demo Ver 실행
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 4. 기술팀 검토 요청 사항 -->
+        <!-- 4. 기술 검토 사항 -->
         <section class="mb-12">
             <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
                 <span class="bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">4</span>
-                <span data-editable="true" data-key="sec4-title">기술팀 검토 요청 사항 (RFP Requirements)</span>
+                <span data-editable="true" data-key="sec4-title">기술 검토 사항</span>
             </h2>
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-                <p class="text-gray-600 mb-6" data-editable="true" data-key="sec4-intro">최종 결정을 위해 다음 4가지는 기술팀의 면밀한 검증(Feasibility Check)이 필요합니다.</p>
+                <p class="text-gray-600 mb-6" data-editable="true" data-key="sec4-intro">최종 결정을 위해 다음 5가지는 기술팀의 면밀한 검증(Feasibility Check)이 필요합니다.</p>
                 <div class="space-y-6">
                     <div class="flex items-start gap-4 pb-6 border-b border-gray-100 last:border-0 last:pb-0">
                         <div class="bg-red-50 text-red-600 font-bold px-3 py-1 rounded text-sm whitespace-nowrap">Point 1</div>
@@ -307,6 +305,14 @@
                             <p class="text-gray-600">추후 구축될 자사 <strong>OTT 시스템</strong> 및 타 플랫폼과의 기술적 연동(Publishing Pipeline)이 원활한가?</p>
                         </div>
                     </div>
+                    <!-- Added Point 5 -->
+                    <div class="flex items-start gap-4 pb-6 border-b border-gray-100 last:border-0 last:pb-0">
+                        <div class="bg-red-50 text-red-600 font-bold px-3 py-1 rounded text-sm whitespace-nowrap">Point 5</div>
+                        <div data-editable="true" data-key="rfp-5">
+                            <h4 class="text-lg font-bold text-gray-900 mb-1">Overall Performance</h4>
+                            <p class="text-gray-600">접속 속도 개선(Latency Optimization) 및 대용량 파일 핸들링 시 UI/UX 반응 속도 검토.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -315,11 +321,11 @@
         <footer class="bg-gray-900 text-white rounded-xl p-8 text-center" data-editable="true" data-key="footer">
             <h2 class="text-2xl font-bold mb-4">결론 및 향후 계획</h2>
             <p class="text-gray-300 mb-6 text-lg">
-                위 기술적 검증 사항(특히 <strong>마이그레이션</strong>과 <strong>OTT 확장성</strong>)을 중심으로<br>
-                <strong>Moments Lab</strong>과 <strong>Dalet Flex</strong>의 최종 PoC를 수행합니다.
+                위 기술적 검증 사항(특히 <strong>마이그레이션</strong>, <strong>AI 연동</strong>, <strong>속도</strong>)을 중심으로<br>
+                <strong>Dalet Flex</strong>의 최종 PoC를 수행하고 도입 여부를 결정합니다.
             </p>
             <div class="inline-block border border-gray-700 bg-gray-800 px-6 py-3 rounded-full text-indigo-400 font-medium">
-                기술팀의 아키텍처 적합성 평가를 최우선 지표로 삼아 최종 1개 사 선정 예정
+                기술팀의 아키텍처 적합성 평가를 최우선 지표로 삼아 최종 선정 예정
             </div>
         </footer>
 
